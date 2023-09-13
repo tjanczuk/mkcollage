@@ -1,0 +1,32 @@
+{
+  "name": "photocollage",
+  "version": "0.0.1",
+  "description": "Create a contact sheet photo collage",
+  "main": "src/index.js",
+  "bin": {
+    "photocollage": "src/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjanczuk/photocollage.git"
+  },
+  "keywords": [
+    "photo",
+    "collage",
+    "contact",
+    "sheet"
+  ],
+  "author": "Tomasz Janczuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tjanczuk/photocollage/issues"
+  },
+  "homepage": "https://github.com/tjanczuk/photocollage#readme",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "exif-parser": "^0.1.12"
+  }
+}
