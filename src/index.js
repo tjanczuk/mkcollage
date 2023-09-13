@@ -4,10 +4,10 @@ const photoCollage = require("./photocollage");
 const program = new Command();
 
 program
-  .name("photocollage")
+  .name("mkcollage")
   .version(require("../package.json").version)
   .description(
-    "Create a photo collage. See https://github.com/tjanczuk/photocollage for documentation."
+    "Create a photo collage. See https://github.com/tjanczuk/mkcollage for documentation."
   )
   .argument("<string>", "image directory or manifest file")
   .option(

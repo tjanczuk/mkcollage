@@ -73,7 +73,7 @@ const createHtml = (rows, options, output) => {
     </script>
 </head>
 <body style="font: caption; margin: 10">
-    <p>Documentation: <a href="https://github.com/tjanczuk/photocollage" target="_blank">https://github.com/tjanczuk/photocollage</a></p>
+    <p>Documentation: <a href="https://github.com/tjanczuk/mkcollage" target="_blank">https://github.com/tjanczuk/mkcollage</a></p>
     <div id="controls" style="display:none; height: 5rem">
         <span id="size"></span>
         <button onclick="downloadCollage('jpeg')">Download JPEG</button>

@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjanczuk/photocollage.git"
+    "url": "git+https://github.com/tjanczuk/mkcollage.git"
   },
   "keywords": [
     "photo",
@@ -22,9 +22,9 @@
   "author": "Tomasz Janczuk",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tjanczuk/photocollage/issues"
+    "url": "https://github.com/tjanczuk/mkcollage/issues"
   },
-  "homepage": "https://github.com/tjanczuk/photocollage#readme",
+  "homepage": "https://github.com/tjanczuk/mkcollage#readme",
   "dependencies": {
     "commander": "^11.0.0",
     "exif-parser": "^0.1.12"
