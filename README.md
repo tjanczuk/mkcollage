@@ -58,4 +58,104 @@ In the example above some images did not have GPS coordinates in their EXIF meta
 
 To understand which EXIF properties are available in your specific images, you can tell *mkcollage* to only output image metadata without generating the actual collage - see next section. 
 
-## 
+## Extract image metadata from images
+
+You can ask *mkcollege* to extract image metadata from the directory of images instead of generating a collage. This is useful if you want to inspect what metadata is available in your images, including EXIF metadata, before generating a collage from those images. You can also manually edit the metadata before generating a collage to manually provide missing information or fix any issues. 
+
+Running the following command will extract image metadata for all images in a directory without generating a collage, and save this metadata in the `metadata.json` file: 
+
+```bash
+npx mkcollage {directory-with-pictures} -m metadata.json
+```
+
+The `metadata.json` file contains a JSON array with objects representing metadata of individual images. You can view or edit this file in any text editor. 
+
+After you have modified the `manifest.json` file, you can generate a collage from it by providing it as the first argument to *mkcollage* instead of the directory of images: 
+
+```bash
+npx mkcollage metadata.json
+```
+
+## Add custom image descriptions
+
+You can add custom descriptions to images in your collage in three steps:
+
+First, export the image metadata to the manifest.json file:
+
+```bash
+npx mkcollage {directory-with-images} -m metadata.json
+```
+
+Then, add a new property (e.g. `title` property) to every object in the manifest.json file using your usual text editor. 
+
+Lastly, generate the collage from the manifest.json file indicating the image descriptions are to be taken from the property you added:
+
+```bash
+nxp mkcollage manifest.json -d "title"
+```
+
+## Control the size and layout of the collage
+
+You can control the size and layour of the collage image and the layout of by providing three parameters:
+
+* The width of the collage, specified with the `-w` option.
+* The maximum height of a single row of images in the collage, specified with the `-r` option.
+* The padding between images, specified with the `-p` option.
+
+Based on these parameters, the width of the collage will be fixed, and the height will be set to accommodate all images. The actual height of every row of images in the collage will never exceed `-r`, but may be smaller depending on the actual sizes of the images placed in that row. 
+
+```bash
+npx mkcollage {directory-with-images} -r 100 -w 1000 -p 3
+```
+![collage-1006x308](https://github.com/tjanczuk/mkcollage/assets/822369/339d11ac-052d-46bc-b55d-ad6db5475427)
+
+```bash
+npx mkcollage {directory-with-images} -r 150 -w 800 -p 5
+```
+![collage-860x730](https://github.com/tjanczuk/mkcollage/assets/822369/84e6e292-d61a-44cc-b648-9845a10e68b3)
+
+## Control the font of the image descriptions
+
+You can customize the font used for image descriptions using the `-f` option. Provide it with any valid value of the [*font* CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/font), for example: 
+
+```bash
+npx mkcollage {directory-with-images} -d "name" -f 'italic bold 12px "Times New Roman"'
+```
+
+![collage-1030x304](https://github.com/tjanczuk/mkcollage/assets/822369/bf7fea74-3794-4aff-9bde-4a37084accc6)
+
+## Advanced styling
+
+You can control several aspects of the collage image by setting global CSS properties for the entire image using the `--style` option. 
+
+For example, to set the background color to black and the description color to white, run the following: 
+
+```bash
+npx mkcollage {directory-with-images} -d "name" --style "background: black; color: white;"
+```
+
+![collage-1030x313](https://github.com/tjanczuk/mkcollage/assets/822369/5ae6d64c-47e2-438b-91c0-d6d707b78ff6)
+
+## Selecting images to include 
+
+You can select the images to include in the collage by providing a JavaScript expression that evaluates to true using the `--filter` option. The expression can use image metadata, including EXIF. 
+
+To select only images taken with an iPhone: 
+
+```bash
+npx mkcollage {directory-with-images} --filter "exif.tags.Model.contains('iPhone')"
+```
+
+To select only images taken with F number greater than 14: 
+
+```bash
+npx mkcollage {directory-with-images} --filter "exif.tags.FNumber > 14"
+```
+
+To select only images taken south of the equator: 
+
+```bash
+npx mkcollage {directory-with-images} --filter "exif.tags.GPSLatitude < 0"
+```
+
+You get the idea.
