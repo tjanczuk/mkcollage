@@ -31,7 +31,7 @@ program
     "caption"
   )
   .option(
-    "-s, --style <string>",
+    "--style <string>",
     "extra CSS styles to add to the top level element"
   )
   .option(
@@ -44,7 +44,7 @@ program
     "property to order images by (check generated metadata for available properties)",
     "stat.birthtime"
   )
-  .option("-r, --reverse", "reverse the sort order (default is ascending)")
+  .option("--reverse", "reverse the sort order (default is ascending)")
   .option(
     "--filter <string>",
     "filter images with a JavaScript expression using image's metadata, including EXIF"

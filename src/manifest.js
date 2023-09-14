@@ -1,4 +1,5 @@
 const { readdirSync, readFileSync, statSync } = require("fs");
+const { runInNewContext } = require("vm");
 const exifParser = require("exif-parser");
 const { join } = require("path");
 
