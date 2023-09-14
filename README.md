@@ -159,3 +159,19 @@ npx mkcollage {directory-with-images} --filter "exif.tags.GPSLatitude < 0"
 ```
 
 You get the idea.
+
+## Sorting images
+
+By default, images in the collage are sorted ascending using their creation date. You can change the property to sort images by using the `--s` option. 
+
+For example, to sort the images using the GPS longitude, run:
+
+```bash
+npx mkcollage {directory-with-images} -s "exif.tags.GPSLongitude"
+```
+
+To reverse the order of the sort, specify the `--reverse` option. 
+
+## Issues? Questions?
+
+File new issues and ask questions [here](https://github.com/tjanczuk/mkcollage/issues).
