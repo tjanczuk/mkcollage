@@ -82,13 +82,18 @@ const createHtml = (rows, options, output) => {
     </div>
     <div id="downloading" style="display:none; height: 5rem">Preparing download... This may take a while depending on the number and size of images in the collage.</div>
     <div id="loading" style="display:block; height: 5rem">Loading images...</div>
-    <div id="collage" style="font: ${escapeHtml(options.font)}; width: ${
+    <div id="collage" style="display: inline-flex; padding: ${
+      options.border
+    }; min-height: ${options.minheight};${
+    (options.centercollage && "align-items: center;") || ""
+  }${options.style || ""}">
+    <div style="font: ${escapeHtml(options.font)}; width: ${
     options.width
-  }; display: flex; flex-wrap: wrap; padding: ${options.padding};${
-    options.style || ""
-  }">`);
+  }; display: flex; flex-wrap: wrap; align-items: center; padding: ${
+    options.padding
+  };">`);
   createRows(rows, options, output);
-  output.write(`</div>
+  output.write(`</div></div>
     <script>
         document.getElementById("size").innerText = "Size: " + document.getElementById("collage").offsetWidth + "x" + document.getElementById("collage").offsetHeight;
         document.getElementById("controls").style.display = "block";

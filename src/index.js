@@ -16,11 +16,21 @@ program
   )
   .option("-w, --width <number>", "width of the collage in pixels", 1024)
   .option(
+    "--minheight <number>",
+    "minimum total height of the collage in pixels",
+    0
+  )
+  .option(
+    "--centercollage",
+    "centers the collage rows if --minheight is specified; otherwise rows are distributed vertically"
+  )
+  .option(
     "-r, --maxRowHeight <number>",
     "maximum height in pixels of a single row of images in the collage",
     256
   )
   .option("-p, --padding <number>", "padding between images in pixels", 3)
+  .option("-b, --border <number>", "border around collage in pixels", 0)
   .option(
     "-d, --description <string>",
     "add a description under an image with a JavaScript expression using image's metadata (including EXIF)"
