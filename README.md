@@ -46,7 +46,7 @@ npx mkcollage {directory-with-pictures} -d "name"
 
 ## Add image descriptions based on EXIF metadata
 
-You can create image descriptions using image metadata, including EXIF information. This is done by passing a JavaScript expression to the `-d` option which returns a string. The JavaScrpt expression can use image metadata that includes EXIF information from the image (the `this` property points to this object). For example, to create image descriptions based on the geographic coordinates where the picture was taken, you can create the collage with:
+You can create image descriptions using image metadata, including EXIF information. This is done by passing a JavaScript expression to the `-d` option which returns a string. The JavaScript expression can use image metadata that includes EXIF information from the image (the `this` property points to this object). For example, to create image descriptions based on the geographic coordinates where the picture was taken, you can create the collage with:
 
 ```bash
 npx mkcollage {directory-with-pictures} -d '`${Math.round(exif.tags.GPSLatitude * 1000) / 1000}, ${Math.round(exif.tags.GPSLongitude * 1000) / 1000}`'
